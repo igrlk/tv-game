@@ -5,14 +5,17 @@ const TYPES = {
 
 export const stubsLeaderboards = [
   { username: 'Igor', score: '11 000' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' },
-  { username: '1', score: '1' }
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' },
+  { username: '', score: '' }
 ]
 
 export default class Storage {
