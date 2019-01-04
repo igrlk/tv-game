@@ -8,6 +8,7 @@
   color: white;
   user-select: none;
   text-transform: uppercase;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
 .Menu button {
@@ -21,6 +22,7 @@
   cursor: inherit;
   margin: 0 auto 20px;
   display: block;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
 }
 
 .Menu button:hover {
