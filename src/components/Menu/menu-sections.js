@@ -46,6 +46,7 @@ class MenuSections extends React.Component {
       changeCurrentPage
     } = this.props
 
+    /** @todo - включать аудио после выхода из game */
     return (
       <div className="Menu" onClick={onIntroStart}>
         <Audio audioRef={audioRef} src={ostSrc} />

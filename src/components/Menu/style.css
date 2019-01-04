@@ -91,6 +91,11 @@
   margin-bottom: 80px;
 }
 
+.Menu-main-page__username div {
+  font-size: 10px;
+  margin-top: -12px;
+}
+
 .Menu-leaderboards {
   width: 830px;
 }
