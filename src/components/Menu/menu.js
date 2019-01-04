@@ -15,7 +15,6 @@ export default class Menu extends React.Component {
   }
 
   toggleAudioPlaying = () => {
-    console.log(this.audio)
     this.audio.current.play()
   }
 
