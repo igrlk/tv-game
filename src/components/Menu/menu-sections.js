@@ -1,8 +1,9 @@
 import React from 'react'
 
 import './style.css'
-import audio from '../../sounds/menu/ost-1.mp3'
+import ostSrc from '../../sounds/menu/ost-1.mp3'
 
+import Audio from '../common/audio'
 import PageConfirm from './pages/confirm'
 import PageIntro from './pages/intro'
 import PageMain from './pages/main'
@@ -37,9 +38,9 @@ export default class MenuSections extends React.Component {
 
     return (
       <div className="Menu" onClick={onIntroStart}>
-        <audio ref={audioRef} src={audio} muted preload="true" />
+        <Audio ref={audioRef} src={ostSrc} />
 
-        {currentPage === 0 && <PageConfirm onClick={changeCurrentPage(2)} />}
+        {currentPage === 0 && <PageConfirm onClick={changeCurrentPage(1)} />}
         {currentPage === 1 && <PageIntro onFinish={changeCurrentPage(2)} />}
         {currentPage === 2 && (
           <PageMain

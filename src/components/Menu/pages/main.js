@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Button from '../button'
+import Button from '../../common/button'
 
 export default class MenuMainPage extends React.Component {
   render() {

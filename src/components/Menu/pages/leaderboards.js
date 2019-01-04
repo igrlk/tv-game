@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Button from '../button'
+import Button from '../../common/button'
 import Storage from '../../../helpers/storage'
 
 export default class Leaderboards extends React.Component {

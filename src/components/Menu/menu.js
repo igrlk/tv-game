@@ -15,19 +15,23 @@ export default class Menu extends React.Component {
   }
 
   toggleAudioPlaying = () => {
+    console.log(this.audio)
     this.audio.current.play()
   }
 
   render() {
     const { changeCurrentPage, audio, toggleAudioPlaying } = this
     return (
-      <MenuSections
-        audioRef={audio}
-        onIntroStart={toggleAudioPlaying}
-        currentPage={this.state.currentPage}
-        changeCurrentPage={changeCurrentPage}
-        history={this.props.history}
-      />
+      <React.Fragment>
+        <MenuSections
+          audioRef={audio}
+          onIntroStart={toggleAudioPlaying}
+          currentPage={this.state.currentPage}
+          changeCurrentPage={changeCurrentPage}
+          history={this.props.history}
+          ostIsMuted={this.state.ostIsMuted}
+        />
+      </React.Fragment>
     )
   }
 }
