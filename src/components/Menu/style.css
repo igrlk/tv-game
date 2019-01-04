@@ -29,12 +29,14 @@
   padding-left: 8px;
 }
 
-.Menu-intro div:last-child {
+.Menu-intro-presents  {
+  width: 320px;
+  text-align: left;
   font-size: 40px;
   position: absolute;
-  left: 8px;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .Menu-confirm {
