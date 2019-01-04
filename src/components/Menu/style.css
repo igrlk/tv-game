@@ -9,6 +9,7 @@
   font-family: 'Press Start 2P', sans-serif;
   user-select: none;
   text-transform: uppercase;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
 .Menu-intro {
