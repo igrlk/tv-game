@@ -1,15 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Audio = React.forwardRef((props, ref) => (
-  <audio {...props} ref={ref} preload="true" />
-))
+function Audio({ src, audioRef, isMuted }) {
+  return <audio muted={isMuted} ref={audioRef} src={src} preload="true" />
+}
 
-function mapStateToProps(state) {
-  console.log(state)
+function mapStateToProps({ app }) {
   return {
-    isMuted: state.app.isSoundMuted
+    isMuted: app.isSoundMuted
   }
 }
 
-export default connect(mapStateToProps)(Audio)
+const ConnectedAudio = connect(mapStateToProps)(Audio)
+
+export default React.forwardRef((props, ref) => (
+  <ConnectedAudio {...props} ref={ref} />
+))

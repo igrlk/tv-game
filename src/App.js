@@ -13,6 +13,7 @@ import './App.css'
 import store from './store/create'
 import Menu from './components/Menu/menu'
 import Game from './components/Game/game'
+import SoundControls from './components/SoundControls/sound-controls'
 
 export default function App() {
   const styles = {
@@ -23,12 +24,15 @@ export default function App() {
     <div style={styles}>
       <Provider store={store}>
         <Router>
-          <Switch>
-            <Route path="/game" exact component={Game} />
-            <Route path="/menu" exact component={Menu} />
+          <React.Fragment>
+            <Switch>
+              <Route path="/game" exact component={Game} />
+              <Route path="/menu" exact component={Menu} />
 
-            <Redirect to="/menu" />
-          </Switch>
+              <Redirect to="/menu" />
+            </Switch>
+            <SoundControls />
+          </React.Fragment>
         </Router>
       </Provider>
     </div>
