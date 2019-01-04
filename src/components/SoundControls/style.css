@@ -1,0 +1,10 @@
+.SoundControls {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #ffffff;
+}
+
+.SoundControls img {
+  width: 80px;
+}
