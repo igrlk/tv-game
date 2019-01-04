@@ -3,22 +3,56 @@ import React from 'react'
 import './style.css'
 import audio from '../../sounds/menu/ost-1.mp3'
 
-import Confirm from './confirm'
-import Intro from './intro'
+import PageConfirm from './pages/confirm'
+import PageIntro from './pages/intro'
+import PageMain from './pages/main'
+import PageLeaderboards from './pages/leaderboards'
 
-export default function MenuSections({
-  audioRef,
-  onIntroStart,
-  currentPage,
-  changeCurrentPage
-}) {
-  return (
-    <div className="Menu" onClick={onIntroStart}>
-      <audio ref={audioRef} src={audio} preload="true" />
+import Storage from '../../helpers/storage'
 
-      {currentPage === 0 && <Confirm onClick={changeCurrentPage(1)} />}
+export default class MenuSections extends React.Component {
+  state = {
+    username: ''
+  }
 
-      {currentPage === 1 && <Intro onFinish={changeCurrentPage(2)} />}
-    </div>
-  )
+  setUsername = value => {
+    this.setState({
+      username: Storage.setUsername(value)
+    })
+  }
+
+  componentDidMount() {
+    this.setState({
+      username: Storage.getUsername() || 'unknown_player'
+    })
+  }
+
+  render() {
+    const {
+      audioRef,
+      onIntroStart,
+      currentPage,
+      changeCurrentPage
+    } = this.props
+
+    return (
+      <div className="Menu" onClick={onIntroStart}>
+        <audio ref={audioRef} src={audio} muted preload="true" />
+
+        {currentPage === 0 && <PageConfirm onClick={changeCurrentPage(2)} />}
+        {currentPage === 1 && <PageIntro onFinish={changeCurrentPage(2)} />}
+        {currentPage === 2 && (
+          <PageMain
+            username={this.state.username}
+            setUsername={this.setUsername}
+            changeCurrentPage={changeCurrentPage}
+            history={this.props.history}
+          />
+        )}
+        {currentPage === 3 && (
+          <PageLeaderboards onExit={changeCurrentPage(2)} />
+        )}
+      </div>
+    )
+  }
 }

@@ -26,6 +26,7 @@ export default class Menu extends React.Component {
         onIntroStart={toggleAudioPlaying}
         currentPage={this.state.currentPage}
         changeCurrentPage={changeCurrentPage}
+        history={this.props.history}
       />
     )
   }
