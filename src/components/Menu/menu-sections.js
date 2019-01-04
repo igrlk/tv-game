@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import './style.css'
 import ostSrc from '../../sounds/menu/ost-1.mp3'
@@ -8,10 +9,10 @@ import PageConfirm from './pages/confirm'
 import PageIntro from './pages/intro'
 import PageMain from './pages/main'
 import PageLeaderboards from './pages/leaderboards'
-
 import Storage from '../../helpers/storage'
+import { setIntroWasPlayed } from '../../store/modules/app'
 
-export default class MenuSections extends React.Component {
+class MenuSections extends React.Component {
   state = {
     username: ''
   }
@@ -26,6 +27,15 @@ export default class MenuSections extends React.Component {
     this.setState({
       username: Storage.getUsername() || 'unknown_player'
     })
+
+    if (this.props.isIntroWasPlayed) {
+      this.props.changeCurrentPage(2)()
+    }
+  }
+
+  closeIntro = () => {
+    this.props.changeCurrentPage(2)()
+    this.props.setIntroWasPlayed(true)
   }
 
   render() {
@@ -38,10 +48,15 @@ export default class MenuSections extends React.Component {
 
     return (
       <div className="Menu" onClick={onIntroStart}>
-        <Audio ref={audioRef} src={ostSrc} />
+        <Audio audioRef={audioRef} src={ostSrc} />
 
-        {currentPage === 0 && <PageConfirm onClick={changeCurrentPage(1)} />}
-        {currentPage === 1 && <PageIntro onFinish={changeCurrentPage(2)} />}
+        {currentPage === 0 && (
+          <PageConfirm
+            onClick={changeCurrentPage(1)}
+            onJoinAfterGame={changeCurrentPage(2)}
+          />
+        )}
+        {currentPage === 1 && <PageIntro onFinish={this.closeIntro} />}
         {currentPage === 2 && (
           <PageMain
             username={this.state.username}
@@ -57,3 +72,14 @@ export default class MenuSections extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = {
+  setIntroWasPlayed
+}
+
+export default connect(
+  ({ app }) => ({
+    isIntroWasPlayed: app.isIntroWasPlayed
+  }),
+  mapDispatchToProps
+)(MenuSections)
