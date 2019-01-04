@@ -1,4 +1,10 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
 
 import Cursor from './assets/img/Cursor.cur'
 
@@ -13,8 +19,14 @@ export default function App() {
 
   return (
     <div style={styles}>
-      <Menu />
-      <Game />
+      <Router>
+        <Switch>
+          <Route path="/game" exact component={Game} />
+          <Route path="/menu" exact component={Menu} />
+
+          <Redirect to="/menu" />
+        </Switch>
+      </Router>
     </div>
   )
 }
