@@ -1,34 +1,32 @@
 import React from 'react'
 
-import './style.css'
-import audio from '../../sounds/menu/ost-1.mp3'
-
-import Confirm from './confirm'
-import Intro from './intro'
+import MenuSections from './menu-sections'
 
 export default class Menu extends React.Component {
+  audio = React.createRef()
   state = {
     currentPage: 0
   }
 
-  changePage = newPage => () => {
+  changeCurrentPage = newPage => () => {
     this.setState({
       currentPage: newPage
     })
   }
 
-  render() {
-    const { changePage } = this
-    return (
-      <div className="Menu">
-        {this.state.currentPage === 0 ? (
-          <Confirm onClick={changePage(1)} />
-        ) : (
-          <audio autoPlay src={audio} />
-        )}
+  toggleAudioPlaying = () => {
+    this.audio.current.play()
+  }
 
-        {this.state.currentPage === 1 && <Intro onFinish={changePage(2)} />}
-      </div>
+  render() {
+    const { changeCurrentPage, audio, toggleAudioPlaying } = this
+    return (
+      <MenuSections
+        audioRef={audio}
+        onIntroStart={toggleAudioPlaying}
+        currentPage={this.state.currentPage}
+        changeCurrentPage={changeCurrentPage}
+      />
     )
   }
 }
