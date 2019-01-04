@@ -5,12 +5,14 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 import Cursor from './assets/img/Cursor.cur'
+import './App.css'
 
+import store from './store/create'
 import Menu from './components/Menu/menu'
 import Game from './components/Game/game'
-import './App.css'
 
 export default function App() {
   const styles = {
@@ -19,14 +21,16 @@ export default function App() {
 
   return (
     <div style={styles}>
-      <Router>
-        <Switch>
-          <Route path="/game" exact component={Game} />
-          <Route path="/menu" exact component={Menu} />
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path="/game" exact component={Game} />
+            <Route path="/menu" exact component={Menu} />
 
-          <Redirect to="/menu" />
-        </Switch>
-      </Router>
+            <Redirect to="/menu" />
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   )
 }
