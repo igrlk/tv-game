@@ -17,7 +17,7 @@ export default class Leaderboards extends React.Component {
   render() {
     const { onExit } = this.props
     return (
-      <div onClick={onExit} className="Menu-centered Menu-leaderboards">
+      <div className="Menu-centered Menu-leaderboards">
         <h1>Leaderboards</h1>
 
         <ul>
@@ -25,6 +25,9 @@ export default class Leaderboards extends React.Component {
             <li>
               <div>{el.username}</div>
               <div>{el.score}</div>
+              <div>
+                ...........................................................
+              </div>
             </li>
           ))}
         </ul>

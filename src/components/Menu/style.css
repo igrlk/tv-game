@@ -114,19 +114,33 @@
   justify-content: space-between;
   margin-bottom: 30px;
   position: relative;
+  height: 16px;
+  overflow: hidden;
 }
 
 .Menu-leaderboards li div {
   background-color: #000000;
   padding-right: 5px;
+  position: relative;
+  z-index: 1;
 }
 
-.Menu-leaderboards li div:last-child {
+.Menu-leaderboards li div:nth-child(2) {
   padding-right: 0;
   padding-left: 5px;
 }
 
+.Menu-leaderboards li div:last-child {
+  position: absolute;
+  font-size: 14px;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  padding: 0;
+}
 
+/* 
 .Menu-leaderboards li:after {
   content: '';
   border-bottom: 3px dashed #fff;
@@ -135,7 +149,7 @@
   position: absolute;
   left: 0;
   bottom: 1px;
-}
+} */
 
 .Menu-leaderboards ul {
   margin-bottom: 40px;
