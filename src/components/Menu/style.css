@@ -6,10 +6,26 @@
   position: absolute;
   background: black;
   color: white;
-  font-family: 'Press Start 2P', sans-serif;
   user-select: none;
   text-transform: uppercase;
-  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+}
+
+.Menu button {
+  width: 406px;
+  height: 61px;
+  border: 3px solid #fff;
+  line-height: 61px;
+  font-size: 20px;
+  background: transparent;
+  color: #ffffff;
+  cursor: inherit;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.Menu button:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .Menu-intro {
@@ -19,6 +35,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
 .Menu-intro div:first-child {
@@ -38,6 +55,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
 .Menu-confirm {
@@ -46,4 +64,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.Menu-main-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.Menu-main-page h1 {
+  font-size: 84px;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+  margin-bottom: 100px;
+}
+
+.Menu-main-page h1 span {
+  font-size: 26px;
+  display: block;
+}
+
+.Menu-main-page h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.Menu-main-page__username {
+  margin-bottom: 80px;
 }
