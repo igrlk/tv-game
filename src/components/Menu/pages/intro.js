@@ -96,11 +96,13 @@ export default class Intro extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="Menu-intro">
+        <div className="Menu-intro Menu-centered">
           <div>{this.state.firstQuote}</div>
           <div>{this.state.secondQuote}</div>
         </div>
-        <div className="Menu-intro-presents">{this.state.presents}</div>
+        <div className="Menu-intro-presents Menu-centered">
+          {this.state.presents}
+        </div>
       </React.Fragment>
     )
   }

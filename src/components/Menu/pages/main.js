@@ -6,7 +6,7 @@ export default class MenuMainPage extends React.Component {
   render() {
     const { username, history, changeCurrentPage } = this.props
     return (
-      <div className="Menu-main-page">
+      <div className="Menu-main-page Menu-centered">
         <h1>
           Space <span>Invaders</span>
         </h1>
