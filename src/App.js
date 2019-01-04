@@ -8,7 +8,7 @@ import './App.css'
 
 export default function App() {
   const styles = {
-    cursor: `url(${Cursor}), url(http://www.example.com/bar.gif), auto`
+    cursor: `url(${Cursor}), auto`
   }
 
   return (
