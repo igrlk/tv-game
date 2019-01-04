@@ -1,20 +1,23 @@
 import React from 'react'
 
-import hoverAudio from '../../sounds/menu/onhover.mp3'
-import clickAudio from '../../sounds/menu/onclick.mp3'
+import hoverAudioSrc from '../../sounds/menu/onhover.mp3'
+import clickAudioSrc from '../../sounds/menu/onclick.mp3'
+
+import Audio from './audio'
 
 export default class Button extends React.Component {
   hoverAudio = React.createRef()
   clickAudio = React.createRef()
 
   clickHandler = onClick => () => {
-    this.clickAudio.current.play()
+    // this.clickAudio.current.play()
     onClick()
   }
 
-  hoverHandler = () => {
-    new Audio(this.hoverAudio.current.src).play()
-  }
+  // hoverHandler = () => {
+  //   console.log(this.hoverAudio.current.src)
+  //   new Audio(this.hoverAudio.current.src).play()
+  // }
 
   render() {
     const { children, onClick } = this.props
@@ -26,9 +29,9 @@ export default class Button extends React.Component {
         >
           {children}
         </button>
-
-        <audio ref={this.hoverAudio} src={hoverAudio} preload="true" />
-        <audio ref={this.clickAudio} src={clickAudio} preload="true" />
+        {/* 
+        <Audio audioRef={this.hoverAudio} src={hoverAudioSrc} />
+        <Audio audioRef={this.clickAudio} src={clickAudioSrc} /> */}
       </React.Fragment>
     )
   }
