@@ -24,7 +24,7 @@ export default class Menu extends React.Component {
       <React.Fragment>
         <MenuSections
           audioRef={audio}
-          onIntroStart={toggleAudioPlaying}
+          playOst={toggleAudioPlaying}
           currentPage={this.state.currentPage}
           changeCurrentPage={changeCurrentPage}
           history={this.props.history}
