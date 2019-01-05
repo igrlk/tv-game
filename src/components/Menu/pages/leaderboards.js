@@ -21,8 +21,8 @@ export default class Leaderboards extends React.Component {
         <h1>Leaderboards</h1>
 
         <ul>
-          {this.state.leaderboards.map(el => (
-            <li>
+          {this.state.leaderboards.map((el, index) => (
+            <li key={index}>
               <div>{el.username}</div>
               <div>{el.score}</div>
               <div>
