@@ -8,7 +8,9 @@ class Button extends React.Component {
 
   hoverHandler = () => {
     if (!this.props.isSoundMuted) {
-      new Audio(this.hoverAudio.current.src).play()
+      const hoverAudio = new Audio(this.hoverAudio.current.src)
+      hoverAudio.volume = 0.4
+      hoverAudio.play()
     }
   }
 
@@ -20,7 +22,12 @@ class Button extends React.Component {
           {children}
         </button>
 
-        <audio ref={this.hoverAudio} src={hoverAudio} preload="true" />
+        <audio
+          volume="0.1"
+          ref={this.hoverAudio}
+          src={hoverAudio}
+          preload="true"
+        />
       </React.Fragment>
     )
   }
