@@ -16,6 +16,7 @@ export default class MenuMainPage extends React.Component {
           <Button onClick={() => console.log('clicked')}>
             change username
           </Button>
+          <div>(section is under development)</div>
         </div>
 
         <Button onClick={() => history.push('/game')}>new game</Button>
