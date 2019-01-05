@@ -29,6 +29,7 @@ class MenuSections extends React.Component {
     })
 
     if (this.props.isIntroWasPlayed) {
+      this.props.onIntroStart()
       this.props.changeCurrentPage(2)()
     }
   }
@@ -46,7 +47,6 @@ class MenuSections extends React.Component {
       changeCurrentPage
     } = this.props
 
-    /** @todo - включать аудио после выхода из game */
     return (
       <div className="Menu" onClick={onIntroStart}>
         <Audio audioRef={audioRef} src={ostSrc} />
