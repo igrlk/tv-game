@@ -1,38 +1,35 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import hoverAudioSrc from '../../sounds/menu/onhover.mp3'
-import clickAudioSrc from '../../sounds/menu/onclick.mp3'
+import hoverAudio from '../../assets/sounds/menu/onhover.mp3'
 
-import Audio from './audio'
-
-export default class Button extends React.Component {
+class Button extends React.Component {
   hoverAudio = React.createRef()
-  clickAudio = React.createRef()
 
-  clickHandler = onClick => () => {
-    // this.clickAudio.current.play()
-    onClick()
+  hoverHandler = () => {
+    if (!this.props.isSoundMuted) {
+      new Audio(this.hoverAudio.current.src).play()
+    }
   }
-
-  // hoverHandler = () => {
-  //   console.log(this.hoverAudio.current.src)
-  //   new Audio(this.hoverAudio.current.src).play()
-  // }
 
   render() {
     const { children, onClick } = this.props
     return (
       <React.Fragment>
-        <button
-          onClick={this.clickHandler(onClick)}
-          onMouseOver={this.hoverHandler}
-        >
+        <button onClick={onClick} onMouseOver={this.hoverHandler}>
           {children}
         </button>
-        {/* 
-        <Audio audioRef={this.hoverAudio} src={hoverAudioSrc} />
-        <Audio audioRef={this.clickAudio} src={clickAudioSrc} /> */}
+
+        <audio ref={this.hoverAudio} src={hoverAudio} preload="true" />
       </React.Fragment>
     )
   }
 }
+
+const mapStateToProps = ({ app }) => {
+  return {
+    isSoundMuted: app.isSoundMuted
+  }
+}
+
+export default connect(mapStateToProps)(Button)
