@@ -9,18 +9,18 @@ import { toggleIsSoundMuted } from '../../store/modules/app'
 
 function SoundControls({ isSoundMuted, toggleIsSoundMuted, isIntroWasPlayed }) {
   return isIntroWasPlayed ? (
-    <div className="SoundControls" onClick={toggleIsSoundMuted}>
-      {isSoundMuted ? (
-        <img src={SoundMuted} alt="Unmute" />
-      ) : (
-        <img src={Sound} alt="Mute" />
-      )}
+    <div onClick={toggleIsSoundMuted} className="SoundControls">
+      <img
+        className={!isSoundMuted ? 'd-none' : ''}
+        src={SoundMuted}
+        alt="Unmute"
+      />
+      <img className={isSoundMuted ? 'd-none' : ''} src={Sound} alt="Mute" />
     </div>
   ) : null
 }
 
 const mapStateToProps = ({ app }) => {
-  console.log(app.isIntroWasPlayed)
   return {
     isSoundMuted: app.isSoundMuted,
     isIntroWasPlayed: app.isIntroWasPlayed
