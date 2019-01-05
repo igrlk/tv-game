@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import './style.css'
-import ostSrc from '../../sounds/menu/ost-1.mp3'
+import ostSrc from '../../assets/sounds/menu/ost-1.mp3'
 
-import Audio from '../common/audio'
+import BackgroundAudio from '../common/background-audio'
 import PageConfirm from './pages/confirm'
 import PageIntro from './pages/intro'
 import PageMain from './pages/main'
@@ -29,7 +29,7 @@ class MenuSections extends React.Component {
     })
 
     if (this.props.isIntroWasPlayed) {
-      this.props.onIntroStart()
+      this.props.playOst()
       this.props.changeCurrentPage(2)()
     }
   }
@@ -40,16 +40,11 @@ class MenuSections extends React.Component {
   }
 
   render() {
-    const {
-      audioRef,
-      onIntroStart,
-      currentPage,
-      changeCurrentPage
-    } = this.props
+    const { audioRef, playOst, currentPage, changeCurrentPage } = this.props
 
     return (
-      <div className="Menu" onClick={onIntroStart}>
-        <Audio audioRef={audioRef} src={ostSrc} />
+      <div className="Menu" onClick={playOst}>
+        <BackgroundAudio audioRef={audioRef} src={ostSrc} />
 
         {currentPage === 0 && (
           <PageConfirm
