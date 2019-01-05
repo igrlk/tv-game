@@ -27,9 +27,9 @@ export default function App() {
           <React.Fragment>
             <Switch>
               <Route path="/game" exact component={Game} />
-              <Route path="/menu" exact component={Menu} />
+              <Route path="/" exact component={Menu} />
 
-              <Redirect to="/menu" />
+              <Redirect to="/" />
             </Switch>
             <SoundControls />
           </React.Fragment>
