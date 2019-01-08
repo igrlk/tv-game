@@ -1,14 +1,39 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import './style.css'
+import ostSrc from '../../assets/sounds/ost/ost-1.mp3'
 
-export default function Game({ history }) {
-  return (
-    <div>
-      <div className="Game">Game</div>
-      <div className="Game" onClick={() => history.push('/')}>
-        back to main menu
+import init from './core/init'
+import BackgroundAudio from '../common/background-audio'
+
+class Game extends React.Component {
+  audioRef = React.createRef()
+  canvas = React.createRef()
+
+  componentDidMount() {
+    const { isIntroWasPlayed, history } = this.props
+    if (!isIntroWasPlayed) {
+      history.push('/')
+    }
+
+    this.audioRef.current.play()
+
+    init(this.canvas.current, () => this.props.history.push('/'))
+  }
+
+  render() {
+    return (
+      <div>
+        <BackgroundAudio audioRef={this.audioRef} src={ostSrc} />
+        <canvas ref={this.canvas} className="Game-canvas" />
       </div>
-    </div>
-  )
+    )
+  }
 }
+
+const mapStateToProps = ({ app }) => ({
+  isIntroWasPlayed: app.isIntroWasPlayed
+})
+
+export default connect(mapStateToProps)(Game)
