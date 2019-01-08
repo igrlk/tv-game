@@ -2,6 +2,7 @@ import React from 'react'
 
 import Button from '../../common/button'
 import Storage from '../../../helpers/storage'
+import { getNiceScore } from '../../../helpers/score'
 
 export default class Leaderboards extends React.Component {
   state = {
@@ -24,7 +25,7 @@ export default class Leaderboards extends React.Component {
           {this.state.leaderboards.map((el, index) => (
             <li key={index}>
               <div>{el.username}</div>
-              <div>{el.score}</div>
+              <div>{getNiceScore(el.score)}</div>
               <div>
                 ...........................................................
               </div>
