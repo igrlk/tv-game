@@ -5,9 +5,11 @@ import './style.css'
 import Sound from '../../assets/img/Sound.png'
 import SoundMuted from '../../assets/img/Sound-muted.png'
 
+import SoundsPlayer from '../../helpers/sounds-player'
 import { toggleIsSoundMuted } from '../../store/modules/app'
 
 function SoundControls({ isSoundMuted, toggleIsSoundMuted, isIntroWasPlayed }) {
+  SoundsPlayer.setIsMuted(isSoundMuted)
   return isIntroWasPlayed ? (
     <div onClick={toggleIsSoundMuted} className="SoundControls">
       <img
@@ -20,12 +22,10 @@ function SoundControls({ isSoundMuted, toggleIsSoundMuted, isIntroWasPlayed }) {
   ) : null
 }
 
-const mapStateToProps = ({ app }) => {
-  return {
-    isSoundMuted: app.isSoundMuted,
-    isIntroWasPlayed: app.isIntroWasPlayed
-  }
-}
+const mapStateToProps = ({ app }) => ({
+  isSoundMuted: app.isSoundMuted,
+  isIntroWasPlayed: app.isIntroWasPlayed
+})
 
 const mapDispatchToProps = {
   toggleIsSoundMuted

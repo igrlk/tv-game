@@ -12,8 +12,9 @@ import './App.css'
 
 import store from './store/create'
 import Menu from './components/Menu/menu'
-import Game from './components/Game/game'
+import Game from './components/Game'
 import SoundControls from './components/SoundControls/sound-controls'
+import SoundPreloader from './components/SoundPreloader/sound-preloader'
 
 export default function App() {
   const styles = {
@@ -32,6 +33,7 @@ export default function App() {
               <Redirect to="/" />
             </Switch>
             <SoundControls />
+            <SoundPreloader />
           </React.Fragment>
         </Router>
       </Provider>
