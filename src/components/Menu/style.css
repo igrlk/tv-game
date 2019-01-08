@@ -89,11 +89,32 @@
 
 .Menu-main-page__username {
   margin-bottom: 80px;
+  position: relative;
 }
 
 .Menu-main-page__username div {
   font-size: 10px;
   margin-top: -12px;
+}
+
+.Menu-main-page__username input {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background-color: transparent;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-weight: 900;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+}
+
+.Menu-main-page__username input + h2 {
+  opacity: 0;
+  pointer-events: none;
+  height: 20px;
 }
 
 .Menu-leaderboards {
@@ -147,17 +168,20 @@
   padding: 0;
 }
 
-/* 
-.Menu-leaderboards li:after {
-  content: '';
-  border-bottom: 3px dashed #fff;
-  width: 100%;
-  z-index: -1;
-  position: absolute;
-  left: 0;
-  bottom: 1px;
-} */
-
 .Menu-leaderboards ul {
   margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1500px) {
+  .Menu-leaderboards h1 {
+    margin-bottom: 35px;
+  }
+
+  .Menu-leaderboards ul {
+    margin-bottom: 30px;
+  }
+
+  .Menu-leaderboards li {
+    margin-bottom: 20px;
+  } 
 }
