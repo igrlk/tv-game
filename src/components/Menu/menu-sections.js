@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import './style.css'
-import ostSrc from '../../assets/sounds/menu/ost-1.mp3'
+import ostSrc from '../../assets/sounds/ost/ost-2.mp3'
 
 import BackgroundAudio from '../common/background-audio'
 import PageConfirm from './pages/confirm'
@@ -25,7 +25,7 @@ class MenuSections extends React.Component {
 
   componentDidMount() {
     this.setState({
-      username: Storage.getUsername() || 'unknown_player'
+      username: Storage.getUsername()
     })
 
     if (this.props.isIntroWasPlayed) {
@@ -69,13 +69,15 @@ class MenuSections extends React.Component {
   }
 }
 
+const mapStateToProps = ({ app }) => ({
+  isIntroWasPlayed: app.isIntroWasPlayed
+})
+
 const mapDispatchToProps = {
   setIntroWasPlayed
 }
 
 export default connect(
-  ({ app }) => ({
-    isIntroWasPlayed: app.isIntroWasPlayed
-  }),
+  mapStateToProps,
   mapDispatchToProps
 )(MenuSections)

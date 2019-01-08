@@ -3,24 +3,26 @@ const TYPES = {
   LEADERBOARDS: 'tv-game/leaderboards'
 }
 
-export const stubsLeaderboards = [
-  { username: 'Igor', score: '11 000' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' },
-  { username: '', score: '' }
-]
+export const stubsLeaderboards = JSON.stringify([
+  { username: 'Igor', score: 11000 },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null },
+  { username: null, score: null }
+])
+
+export const stubUsername = 'new_player'
 
 export default class Storage {
   static getUsername() {
-    return localStorage.getItem(TYPES.USERNAME)
+    return localStorage.getItem(TYPES.USERNAME) || stubUsername
   }
 
   static setUsername(value) {
@@ -29,11 +31,36 @@ export default class Storage {
   }
 
   static getLeaderboards() {
-    return localStorage.getItem(TYPES.LEADERBOARDS) || stubsLeaderboards
+    const result = localStorage.getItem(TYPES.LEADERBOARDS) || stubsLeaderboards
+    return JSON.parse(result)
   }
 
-  static addToLeaderboards(value) {
-    /** @todo filter */
-    localStorage.setItem(TYPES.LEADERBOARDS, value)
+  static setLeaderboards(leaderboards) {
+    localStorage.setItem(
+      TYPES.LEADERBOARDS,
+      JSON.stringify(leaderboards.splice(0, 12))
+    )
+  }
+
+  static addToLeaderboards(score) {
+    const leaderboards = this.getLeaderboards()
+    const result = {
+      username: this.getUsername(),
+      score
+    }
+
+    const index = leaderboards.findIndex(el => el.score < score)
+    if (index !== -1) {
+      leaderboards.splice(index, 0, result)
+
+      this.setLeaderboards(leaderboards)
+
+      return {
+        place: index + 1,
+        success: true
+      }
+    }
+
+    return { place: null, success: false }
   }
 }
