@@ -349,7 +349,7 @@ export default class PlayStage {
           SoundsPlayer.play('invaderDestroying', 0.25)
 
           game.score += this.config.invaderKillReward
-          return 0
+          return 1
         }
       })
     })
