@@ -268,7 +268,7 @@ export default class PlayStage {
     }
 
     if (this.invaders.length === 0) {
-      game.score += 5000
+      game.score += this.config.winReward
       game.setStage(new PlayStage(game.config))
     }
   }
@@ -349,7 +349,7 @@ export default class PlayStage {
           invaders.splice(index, 1)
           SoundsPlayer.play('invaderDestroying', 0.25)
 
-          game.score += 500
+          game.score += this.config.invaderKillReward
           break
         }
       }
