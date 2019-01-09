@@ -3,6 +3,8 @@ import React from 'react'
 import Button from '../../common/button'
 
 export default class MenuMainPage extends React.Component {
+  usernameInput = React.createRef()
+
   state = {
     isUsernameIsEditing: false,
     username: ''
@@ -15,6 +17,22 @@ export default class MenuMainPage extends React.Component {
     }
   }
 
+  saveUsername = () => {
+    this.setState({
+      isUsernameIsEditing: false
+    })
+    this.props.setUsername(this.state.username)
+  }
+
+  allowUsernameEditing = () => {
+    this.setState({
+      isUsernameIsEditing: true
+    })
+    setTimeout(() => {
+      this.usernameInput.current.focus()
+    })
+  }
+
   componentDidMount() {
     this.setState({
       username: this.props.username
@@ -22,7 +40,7 @@ export default class MenuMainPage extends React.Component {
   }
 
   render() {
-    const { setUsername, history, changeCurrentPage } = this.props
+    const { history, changeCurrentPage } = this.props
     const { isUsernameIsEditing, username } = this.state
     return (
       <div className="Menu-main-page Menu-centered">
@@ -33,6 +51,7 @@ export default class MenuMainPage extends React.Component {
         <div className="Menu-main-page__username">
           {isUsernameIsEditing && (
             <input
+              ref={this.usernameInput}
               maxLength="20"
               type="text"
               value={username}
@@ -41,26 +60,9 @@ export default class MenuMainPage extends React.Component {
           )}
           <h2>{username}</h2>
           {isUsernameIsEditing ? (
-            <Button
-              onClick={() => {
-                this.setState({
-                  isUsernameIsEditing: false
-                })
-                setUsername(username)
-              }}
-            >
-              save username
-            </Button>
+            <Button onClick={this.saveUsername}>save username</Button>
           ) : (
-            <Button
-              onClick={() =>
-                this.setState({
-                  isUsernameIsEditing: true
-                })
-              }
-            >
-              change username
-            </Button>
+            <Button onClick={this.allowUsernameEditing}>change username</Button>
           )}
         </div>
 
