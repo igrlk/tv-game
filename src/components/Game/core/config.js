@@ -5,7 +5,7 @@ export const config = {
   invaderInitialVelocity: 35,
   invaderAcceleration: 10,
   invaderDropDistance: 20,
-  rocketVelocity: 120,
+  rocketVelocity: 240,
   rocketMaxFireRate: 2,
   gameWidth: 400,
   gameHeight: 300,
