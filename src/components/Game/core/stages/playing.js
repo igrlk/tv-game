@@ -336,23 +336,22 @@ export default class PlayStage {
 
   checkRocketInvaderCollision(game: Game) {
     this.invaders.forEach((invader, index, invaders) => {
-      for (var j = 0; j < this.rockets.length; j++) {
-        var rocket = this.rockets[j]
-
+      /* eslint-disable-next-line */
+      this.rockets.some((rocket, rocketIndex, rockets) => {
         if (
           rocket.x >= invader.x - invader.width / 2 &&
           rocket.x <= invader.x + invader.width / 2 &&
           rocket.y >= invader.y - invader.height / 2 &&
           rocket.y <= invader.y + invader.height / 2
         ) {
-          this.rockets.splice(j--, 1)
+          this.rockets.splice(rocketIndex, 1)
           invaders.splice(index, 1)
           SoundsPlayer.play('invaderDestroying', 0.25)
 
           game.score += this.config.invaderKillReward
-          break
+          return 0
         }
-      }
+      })
     })
   }
 
