@@ -36,8 +36,6 @@ export default class Game {
       top: height / 2 - gameHeight,
       bottom: height / 2 + gameHeight
     }
-    console.log(this.gameBounds.left, this.gameBounds.right)
-    console.log(this.gameBounds.top, this.gameBounds.bottom)
   }
 
   start() {
