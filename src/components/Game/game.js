@@ -15,11 +15,10 @@ class Game extends React.Component {
     const { isIntroWasPlayed, history } = this.props
     if (!isIntroWasPlayed) {
       history.push('/')
+    } else {
+      this.audioRef.current.play()
+      init(this.canvas.current, () => this.props.history.push('/'))
     }
-
-    this.audioRef.current.play()
-
-    init(this.canvas.current, () => this.props.history.push('/'))
   }
 
   render() {
