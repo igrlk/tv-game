@@ -10,5 +10,7 @@ export const config = {
   gameWidth: 400,
   gameHeight: 300,
   fps: 60,
-  shipSpeed: 150
+  shipSpeed: 150,
+  winReward: 5000,
+  invaderKillReward: 500
 }
