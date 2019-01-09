@@ -42,10 +42,6 @@ export default class PlayStage {
     }
     this.ship = game.ship
 
-    this.invaderCurrentVelocity = 10
-    this.invaderCurrentDropDistance = 0
-    this.isInvadersAreDropping = false
-
     const {
       shipSpeed,
       invaderInitialVelocity,
