@@ -11,17 +11,16 @@ export default class MenuMainPage extends React.Component {
   }
 
   onChangeHandler = ({ target }) => {
-    const { value } = target
-    if (value.length > 0) {
-      this.setState({ username: target.value })
-    }
+    this.setState({ username: target.value })
   }
 
   saveUsername = () => {
-    this.setState({
-      isUsernameIsEditing: false
-    })
-    this.props.setUsername(this.state.username)
+    if (this.state.username.length > 0) {
+      this.setState({
+        isUsernameIsEditing: false
+      })
+      this.props.setUsername(this.state.username)
+    }
   }
 
   allowUsernameEditing = () => {
@@ -58,7 +57,7 @@ export default class MenuMainPage extends React.Component {
               onChange={this.onChangeHandler}
             />
           )}
-          <h2>{username}</h2>
+          <h2>{this.props.username}</h2>
           {isUsernameIsEditing ? (
             <Button onClick={this.saveUsername}>save username</Button>
           ) : (
