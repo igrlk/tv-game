@@ -29,12 +29,12 @@ export default class Game {
     this.width = width
     this.height = height
 
-    const { gameWidth, gameHeight } = this.config
+    const { widthDiff, heightDiff } = this.config
     this.gameBounds = {
-      left: width / 2 - gameWidth,
-      right: width / 2 + gameWidth,
-      top: height / 2 - gameHeight,
-      bottom: height / 2 + gameHeight
+      left: width / 2 - widthDiff,
+      right: width / 2 + widthDiff,
+      top: height / 2 - heightDiff,
+      bottom: height / 2 + heightDiff
     }
   }
 
